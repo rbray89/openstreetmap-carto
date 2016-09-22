@@ -1,8 +1,8 @@
-@address-color: #666;
+@address-color: desaturate(#666, 100%);
 
 #interpolation {
   [zoom >= 17] {
-    line-color: #888;
+    line-color: desaturate(#888, 100%);
     line-width: 1;
     line-dasharray: 2,4;
   }
@@ -42,7 +42,7 @@
   [zoom >= 17] {
     text-name: "[name]";
     text-size: 11;
-    text-fill: #444;
+    text-fill: desaturate(#444, 100%);
     text-face-name: @book-fonts;
     text-halo-radius: @standard-halo-radius;
     text-wrap-width: 20;

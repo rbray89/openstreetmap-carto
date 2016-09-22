@@ -4,23 +4,23 @@
 /*                                                                   */
 /*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */
 /*                                                                   */
-@motorway-low-zoom-casing: #c24e6b;
-@trunk-low-zoom-casing: #cf6649;
-@primary-low-zoom-casing: #c38a27;
-@secondary-low-zoom-casing: #9eae23;
-@motorway-casing: #dc2a67;
-@trunk-casing: #c84e2f;
-@primary-casing: #a06b00;
-@secondary-casing: #707d05;
-@motorway-shield: #620728;
-@trunk-shield: #5d1b0b;
-@primary-shield: #4c2e00;
-@secondary-shield: #323b00;
-@motorway-low-zoom: #e66e89;
-@trunk-low-zoom: #f5977a;
-@primary-low-zoom: #f3c380;
-@secondary-low-zoom: #e8eda0;
-@motorway-fill: #e892a2;
-@trunk-fill: #f9b29c;
-@primary-fill: #fcd6a4;
-@secondary-fill: #f7fabf;
+@motorway-low-zoom-casing: desaturate(#c24e6b, 100%);
+@trunk-low-zoom-casing: desaturate(#cf6649, 100%);
+@primary-low-zoom-casing: desaturate(#c38a27, 100%);
+@secondary-low-zoom-casing: desaturate(#9eae23, 100%);
+@motorway-casing: desaturate(#dc2a67, 100%);
+@trunk-casing: desaturate(#c84e2f, 100%);
+@primary-casing: desaturate(#a06b00, 100%);
+@secondary-casing: desaturate(#707d05, 100%);
+@motorway-shield: desaturate(#620728, 100%);
+@trunk-shield: desaturate(#5d1b0b, 100%);
+@primary-shield: desaturate(#4c2e00, 100%);
+@secondary-shield: desaturate(#323b00, 100%);
+@motorway-low-zoom: desaturate(#e66e89, 100%);
+@trunk-low-zoom: desaturate(#f5977a, 100%);
+@primary-low-zoom: desaturate(#f3c380, 100%);
+@secondary-low-zoom: desaturate(#e8eda0, 100%);
+@motorway-fill: desaturate(#e892a2, 100%);
+@trunk-fill: desaturate(#f9b29c, 100%);
+@primary-fill: desaturate(#fcd6a4, 100%);
+@secondary-fill: desaturate(#f7fabf, 100%);

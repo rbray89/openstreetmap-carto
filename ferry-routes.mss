@@ -1,9 +1,9 @@
-@ferry-route: #66f;
+@ferry-route: desaturate(#66f, 100%);
 @ferry-route-text: @ferry-route;
 
 #ferry-routes {
   [zoom >= 7] {
-    /* background prevents problems with overlapping ferry-routes, see #457 */
+    /* background prevents problems with overlapping ferry-routes, see desaturate(#457, 100%) */
     background/line-color: @water-color;
     background/line-width: 1; /* Needs to be a bit wider than the route itself because of antialiasing */
     line-color: @ferry-route;

@@ -1,4 +1,4 @@
-@admin-boundaries: #ac46ac;
+@admin-boundaries: desaturate(#ac46ac, 100%);
 
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
@@ -180,7 +180,7 @@ overlapping borders correctly.
 #nature-reserve-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
-  text-fill: green;
+  text-fill: desaturate(green, 100%);
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
   text-placement: line;
@@ -194,18 +194,18 @@ overlapping borders correctly.
     [zoom < 10] {
       ::fill {
         opacity: 0.05;
-        polygon-fill: green;
+        polygon-fill: desaturate(green, 100%);
       }
     }
     a/line-width: 1;
     a/line-offset: -0.5;
-    a/line-color: green;
+    a/line-color: desaturate(green, 100%);
     a/line-opacity: 0.15;
     a/line-join: round;
     a/line-cap: round;
     b/line-width: 2;
     b/line-offset: -1;
-    b/line-color: green;
+    b/line-color: desaturate(green, 100%);
     b/line-opacity: 0.15;
     b/line-join: round;
     b/line-cap: round;

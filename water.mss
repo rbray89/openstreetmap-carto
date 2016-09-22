@@ -1,6 +1,6 @@
-@water-text: #6699cc;
-@glacier: #ddecec;
-@glacier-line: #9cf;
+@water-text: desaturate(#6699cc, 100%);
+@glacier: desaturate(#ddecec, 100%);
+@glacier-line: desaturate(#9cf, 100%);
 
 #water-areas {
   [natural = 'glacier']::natural {
@@ -135,7 +135,7 @@
       line-dasharray: 4,2;
       line-cap: butt;
       line-join: miter;
-      a/line-color: #f3f7f7;
+      a/line-color: desaturate(#f3f7f7, 100%);
       a/line-width: 1;
       [zoom >= 14] { a/line-width: 2; }
       [zoom >= 15] { a/line-width: 3; }
@@ -177,14 +177,14 @@
         line-dasharray: 4,2;
         a/line-width: 1;
         [waterway = 'stream'] { a/line-width: 2; }
-        a/line-color: #f3f7f7;
+        a/line-color: desaturate(#f3f7f7, 100%);
       }
     }
   }
 
   [waterway = 'derelict_canal'][zoom >= 12] {
     line-width: 1.5;
-    line-color: #b5e4d0;
+    line-color: desaturate(#b5e4d0, 100%);
     line-dasharray: 4,4;
     line-opacity: 0.5;
     line-join: round;
@@ -265,7 +265,7 @@
     [waterway = 'derelict_canal'][zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: #80d1ae;
+      text-fill: desaturate(#80d1ae, 100%);
       text-face-name: @oblique-fonts;
       text-placement: line;
       text-spacing: 600;

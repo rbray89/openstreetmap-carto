@@ -48,6 +48,6 @@
 
 #builtup {
   [zoom >= 8][zoom < 10] {
-    polygon-fill: #ddd;
+    polygon-fill: desaturate(#ddd, 100%);
   }
 }

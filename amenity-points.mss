@@ -1,14 +1,14 @@
-@marina-text: #576ddf; // also swimming_pool
-@wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
-@shop-icon: #ac39ac;
-@shop-text: #939;
-@transportation-icon: #0092da;
-@transportation-text: #0066ff;
+@marina-text: desaturate(#576ddf, 100%); // also swimming_pool
+@wetland-text: darken(desaturate(#4aa5fa, 100%), 25%); /* Also for marsh and mud */
+@shop-icon: desaturate(#ac39ac, 100%);
+@shop-text: desaturate(#939, 100%);
+@transportation-icon: desaturate(#0092da, 100%);
+@transportation-text: desaturate(#0066ff, 100%);
 @airtransport: #8461C4;
-@health-color: #da0092;
-@amenity-brown: #734a08;
-@man-made-icon: #555;
-@landform-color: #d08f55;
+@health-color: desaturate(#da0092, 100%);
+@amenity-brown: desaturate(#734a08, 100%);
+@man-made-icon: desaturate(#555, 100%);
+@landform-color: desaturate(#d08f55, 100%);
 
 @landcover-font-size: 10;
 @landcover-font-size-big: 12;
@@ -101,7 +101,7 @@
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
     marker-file: url('symbols/traffic_light.svg');
-    marker-fill: #0a0a0a;
+    marker-fill: desaturate(#0a0a0a, 100%);
     marker-placement: interior;
     marker-clip: false;
   }
@@ -376,7 +376,7 @@
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/place_of_worship.16.svg');
-    marker-fill: #000000;
+    marker-fill: desaturate(#000000, 100%);
     marker-placement: interior;
     marker-clip: false;
     [religion = 'christian'] {
@@ -411,7 +411,7 @@
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/christian.9.svg');
-    marker-fill: #000000;
+    marker-fill: desaturate(#000000, 100%);
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1004,7 +1004,7 @@
 
   [feature = 'natural_volcano'][zoom >= 11] {
     marker-file: url('symbols/peak.svg');
-    marker-fill: #d40000;
+    marker-fill: desaturate(#d40000, 100%);
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1057,7 +1057,7 @@
   [feature = 'man_made_cross'][zoom >= 16],
   [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/christian.9.svg');
-    marker-fill: #000000;
+    marker-fill: desaturate(#000000, 100%);
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1108,7 +1108,7 @@
   [feature = 'barrier_lift_gate'][zoom >= 16]::barrier,
   [feature = 'barrier_swing_gate'][zoom >= 16]::barrier {
     marker-file: url('symbols/liftgate.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: desaturate(#3f3f3f, 100%);
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1118,7 +1118,7 @@
     [zoom >= 16] {
       marker-width: 3;
       marker-line-width: 0;
-      marker-fill: #7d7c7c;
+      marker-fill: desaturate(#7d7c7c, 100%);
       marker-placement: interior;
 
       [zoom >= 18] {
@@ -1148,7 +1148,7 @@
   [feature = 'place_islet'][zoom >= 14][way_pixels > 3000][way_pixels < 800000],
   [feature = 'place_islet'][zoom >= 17][way_pixels < 800000] {
     text-name: "[name]";
-    text-fill: #000;
+    text-fill: desaturate(#000, 100%);
     text-size: @standard-text-size;
     [way_pixels > 12000] { text-size: 12; }
     [way_pixels > 48000] { text-size: 15; }
@@ -1242,7 +1242,7 @@
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
-      text-fill: #66ccaf;
+      text-fill: desaturate(#66ccaf, 100%);
     }
     [feature = 'amenity_bicycle_parking'],
     [feature = 'amenity_motorcycle_parking'] {
@@ -1277,7 +1277,7 @@
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #000033;
+    text-fill: desaturate(#000033, 100%);
     text-dy: 12;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1293,7 +1293,7 @@
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: darken(@landform-color, 30%);
-    [feature = 'natural_volcano'] { text-fill: #d40000; }
+    [feature = 'natural_volcano'] { text-fill: desaturate(#d40000, 100%); }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
@@ -1635,7 +1635,7 @@
         text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
       }
       [feature = 'tourism_attraction'] {
-        text-fill: #660033;
+        text-fill: desaturate(#660033, 100%);
         text-face-name: @standard-font;
       }
       [feature = 'amenity_kindergarten'],
@@ -1714,7 +1714,7 @@
   [feature = 'tourism_camp_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #0066ff;
+    text-fill: desaturate(#0066ff, 100%);
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1732,7 +1732,7 @@
   [feature = 'amenity_embassy'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #0066ff;
+    text-fill: desaturate(#0066ff, 100%);
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1744,7 +1744,7 @@
   [feature = 'amenity_taxi'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #0066ff;
+    text-fill: desaturate(#0066ff, 100%);
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1972,7 +1972,7 @@
   [feature = 'aeroway_gate'][zoom >= 17] {
     text-name: "[ref]";
     text-size: @standard-text-size;
-    text-fill: #aa66cc;
+    text-fill: desaturate(#aa66cc, 100%);
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -2145,7 +2145,7 @@
   [feature = 'natural_tree'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: green;
+    text-fill: desaturate(green, 100%);
     text-dy: 7;
     [zoom >= 18] { text-dy: 8; }
     [zoom >= 19] { text-dy: 11; }
@@ -2162,7 +2162,7 @@
   ::canopy {
     opacity: 0.3;
     [natural = 'tree_row'] {
-      line-color: green;
+      line-color: desaturate(green, 100%);
       line-cap: round;
       line-width: 2.5;
       [zoom >= 17] {
@@ -2179,7 +2179,7 @@
       }
     }
     [natural = 'tree'] {
-      marker-fill: green;
+      marker-fill: desaturate(green, 100%);
       marker-allow-overlap: true;
       marker-line-width: 0;
       marker-width: 2.5;
@@ -2205,7 +2205,7 @@
   }
   [natural = 'tree']::trunk {
     [zoom >= 18] {
-      trunk/marker-fill: #b27f36;
+      trunk/marker-fill: desaturate(#b27f36, 100%);
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
       trunk/marker-width: 2;
