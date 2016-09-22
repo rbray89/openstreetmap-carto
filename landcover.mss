@@ -10,13 +10,13 @@
 // --- "base" landuses ---
 
 @residential: desaturate(#e0dfdf, 100%);      // Lch(89,0,0)
-@residential-line: #B9B9B9; // Lch(75,0,0)
-@retail: #FFD6D1;           // Lch(89,16,30)
-@retail-line: #D99C95;      // Lch(70,25,30)
-@commercial: #F2DAD9;       // Lch(89,8.5,25)
-@commercial-line: #D1B2B0;  // Lch(75,12,25)
-@industrial: #EBDBE8;       // Lch(89,9,330)
-@industrial-line: #C6B3C3;  // Lch(75,11,330)
+@residential-line: desaturate(#B9B9B9, 100%); // Lch(75,0,0)
+@retail: desaturate(#FFD6D1, 100%);           // Lch(89,16,30)
+@retail-line: desaturate(#D99C95, 100%);      // Lch(70,25,30)
+@commercial: desaturate(#F2DAD9, 100%);       // Lch(89,8.5,25)
+@commercial-line: desaturate(#D1B2B0, 100%);  // Lch(75,12,25)
+@industrial: desaturate(#EBDBE8, 100%);       // Lch(89,9,330)
+@industrial-line: desaturate(#C6B3C3, 100%);  // Lch(75,11,330)
 @railway: @industrial;
 @railway-line: @industrial-line;
 @farmland: desaturate(#fbecd7, 100%);         // Lch(94,12,80) (Also used for farm)
@@ -34,10 +34,10 @@
 @campsite: desaturate(#def6c0, 100%); // also caravan_site, picnic_site
 @cemetery: desaturate(#aacbaf, 100%); // also grave_yard
 @construction: desaturate(#c7c7b4, 100%);
-@danger_area: pink;
+@danger_area: desaturate(pink, 100%);
 @garages: desaturate(#dfddce, 100%);
 @heath: desaturate(#d6d99f, 100%);
-@mud: rgba(203,177,154,0.3); // produces desaturate(#e6dcd1, 100%) over @land
+@mud: desaturate(rgba(203,177,154,0.3), 100%); // produces desaturate(#e6dcd1, 100%) over @land
 @parking: desaturate(#f7efb7, 100%);
 @place_of_worship: desaturate(#cdccc9, 100%);
 @place_of_worship_outline: desaturate(#111, 100%);

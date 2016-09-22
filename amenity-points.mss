@@ -4,7 +4,7 @@
 @shop-text: desaturate(#939, 100%);
 @transportation-icon: desaturate(#0092da, 100%);
 @transportation-text: desaturate(#0066ff, 100%);
-@airtransport: #8461C4;
+@airtransport: desaturate(#8461C4, 100%);
 @health-color: desaturate(#da0092, 100%);
 @amenity-brown: desaturate(#734a08, 100%);
 @man-made-icon: desaturate(#555, 100%);

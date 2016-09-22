@@ -95,13 +95,13 @@
   [zoom >= 14] {
     a/line-width: 1;
     a/line-offset: -0.5;
-    a/line-color: blue;
+    a/line-color: desaturate(blue, 100%);
     a/line-opacity: 0.1;
     a/line-join: round;
     a/line-cap: round;
     b/line-width: 3;
     b/line-offset: -1.5;
-    b/line-color: blue;
+    b/line-color: desaturate(blue, 100%);
     b/line-opacity: 0.1;
     b/line-join: round;
     b/line-cap: round;
