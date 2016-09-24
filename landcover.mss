@@ -467,7 +467,7 @@
         polygon-fill: @societal_amenities;
         [zoom >= 13] {
           line-width: 0.3;
-          line-color: brown;
+          line-color: desaturate(brown, 100%);
         }
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
