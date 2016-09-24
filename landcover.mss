@@ -76,7 +76,7 @@
 
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
-    line-color: saturate(darken(@water-color, 40%), 30%);
+    line-color: desaturate(saturate(darken(@water-color, 40%), 30%), 100%);
     line-width: 0.5;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -95,7 +95,7 @@
   [feature = 'tourism_picnic_site'] {
     [zoom >= 10] {
       polygon-fill: @campsite;
-      line-color: saturate(darken(@campsite, 60%), 30%);
+      line-color: desaturate(saturate(darken(@campsite, 60%), 30%), 100%);
       line-width: 0.3;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -481,7 +481,7 @@
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
-      line-color: saturate(darken(@parking, 40%), 20%);
+      line-color: desaturate(saturate(darken(@parking, 40%), 20%), 100%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -496,7 +496,7 @@
   [feature = 'aeroway_aerodrome'][zoom >= 10] {
     polygon-fill: @aerodrome;
     line-width: 0.2;
-    line-color: saturate(darken(@aerodrome, 40%), 20%);
+    line-color: desaturate(saturate(darken(@aerodrome, 40%), 20%), 100%);
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -534,7 +534,7 @@
     polygon-fill: @track;
     [zoom >= 15] {
       line-width: 0.5;
-      line-color: saturate(darken(@track, 30%), 20%);
+      line-color: desaturate(saturate(darken(@track, 30%), 20%), 100%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -544,7 +544,7 @@
     polygon-fill: @pitch;
     [zoom >= 15] {
       line-width: 0.5;
-      line-color: saturate(darken(@pitch, 30%), 20%);
+      line-color: desaturate(saturate(darken(@pitch, 30%), 20%), 100%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
