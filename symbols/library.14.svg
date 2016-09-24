@@ -5,11 +5,35 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
    viewBox="0 0 16 16"
    height="100%"
    width="100%"
-   version="1.1">
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="library.14.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview7"
+     showgrid="false"
+     inkscape:zoom="14.75"
+     inkscape:cx="8"
+     inkscape:cy="8"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -18,21 +42,21 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs6" />
   <rect
-     width="16"
-     height="16"
-     x="0"
-     y="0"
+     style="visibility:hidden;fill:none;stroke:none"
      id="rect4174"
-     style="visibility:hidden;fill:none;stroke:none" />
+     y="0"
+     x="0"
+     height="16"
+     width="16" />
   <path
-     id="path4176"
+     style="fill:#4f4f4f;fill-opacity:1;stroke:none"
      d="M 3.5917969,2.8769531 C 3.39328,2.8849528 3.1958998,2.9246486 3,3 l 0,8 c 0,0 3.1875,-0.125 4,3 L 7,5.5996094 C 6.38001,4.2940108 4.9814151,2.8209552 3.5917969,2.8769531 Z M 7,14 C 4.9375,12.40625 2,12 2,12 L 2,4.4003906 1,4 l 0,9 6,2 2,0 6,-2 0,-9 -1,0.4003906 0,8.0000004 L 9,14 C 8.333333,13.74532 7.556181,13.790637 7,14 Z M 13,3 C 11.00748,2.8934496 8.7073046,4.0896818 7.5,5.1191406 l 0,8.4648434 c 1.1147712,-0.924639 3.113583,-2.141273 5.5,-2.384765 z"
-     style="fill:#734a08;fill-opacity:1;stroke:none" />
+     id="path4176" />
 </svg>
