@@ -133,7 +133,7 @@
       #text-line {
         text-placement: line;
         text-dy: 8;
-        text-spacing: 400;
+        text-spacing: 800;
       }
       #text-point {
         text-placement: point;
@@ -158,7 +158,7 @@
       }
       #text-line {
         text-placement: line;
-        text-spacing: 400;
+        text-spacing: 800;
       }
     }
   }

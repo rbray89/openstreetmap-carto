@@ -207,7 +207,7 @@
       text-face-name: @oblique-fonts;
       text-placement: line;
       text-fill: @water-text;
-      text-spacing: 400;
+      text-spacing: 800;
       text-size: 10;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;

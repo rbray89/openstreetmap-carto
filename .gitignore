@@ -8,3 +8,6 @@ localconfig.json
 # Generated at runtime by Python.
 *.pyc
 **/*.pyc
+www/*
+*.sqlite
+*.index

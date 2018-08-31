@@ -1,5 +1,5 @@
 Map {
-  background-color: white;
+  background-color: @land-color;
 }
 
 /*
@@ -45,7 +45,7 @@ be used because Mapnik does not support SBIT TTF.
 /*
 A regular style.
 */
-@book-fonts:    "Noto Sans UI Regular",
+@book-fonts:    "Noto Sans Regular",
                 "Noto Sans CJK JP Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
@@ -107,17 +107,15 @@ A regular style.
 
                 "Noto Kufi Arabic Regular",
 
-                "Noto Emoji Regular",
-
                 "DejaVu Sans Book",
 
-                "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
+                "Unifont Medium", "Unifont Upper Medium";
 
 /*
 A bold style is available for almost all scripts. Bold text is heavier than
 regular text and can be used for emphasis. Fallback is a regular style.
 */
-@bold-fonts:    "Noto Sans UI Bold",
+@bold-fonts:    "Noto Sans Bold",
                 "Noto Sans CJK JP Bold",
                 "Noto Sans Armenian Bold",
                 "Noto Sans Bengali UI Bold",
@@ -186,18 +184,16 @@ regular text and can be used for emphasis. Fallback is a regular style.
 
                 "Noto Kufi Arabic Regular",
 
-                "Noto Emoji Regular",
-
                 "DejaVu Sans Bold", "DejaVu Sans Book",
 
-                "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
+                "Unifont Medium", "Unifont Upper Medium";
 
 /*
 Italics are only available for the base font, not the other scripts.
 For a considerable number of labels this style will make no difference to the regular style.
 */
-@oblique-fonts: "Noto Sans UI Italic",
-                "Noto Sans UI Regular",
+@oblique-fonts: "Noto Sans Italic",
+                "Noto Sans Regular",
                 "Noto Sans CJK JP Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
@@ -259,11 +255,9 @@ For a considerable number of labels this style will make no difference to the re
 
                 "Noto Kufi Arabic Regular",
 
-                "Noto Emoji Regular",
+                "DejaVu Sans Book", "DejaVu Sans Book",
 
-                "DejaVu Sans Oblique", "DejaVu Sans Book",
-
-                "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
+                "Unifont Medium", "Unifont Upper Medium";
 
 @water-color: desaturate(#b5d0d0, 100%);
 @land-color: desaturate(#f2efe9, 100%);
