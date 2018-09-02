@@ -10,6 +10,10 @@ localconfig.js
 .kosmtik-config.yml
 .env
 
+*.sqlite
+*.sqlite.index
+www/
+
 # Generated at runtime by Python.
 *.pyc
 **/*.pyc

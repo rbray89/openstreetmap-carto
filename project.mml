@@ -54,32 +54,107 @@ Stylesheet:
   - admin.mss
   - addressing.mss
 Layer:
-  - id: world
+  - id: world-builtup
+    geometry: polygon
+    <<: *extents84
+    Datasource:
+        file: data/ne_10m_urban_areas/ne_10m_urban_areas.shp
+        type: shape
+    properties:
+    maxzoom: 11
+  - id: world-water
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp
+      file: data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp
       type: shape
     properties:
       maxzoom: 9
-  - id: coast-poly
+  - id: world-coast-poly
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/land-polygons-split-3857/land_polygons.shp
+      file: data/water-polygons-split-3857/water_polygons.shp
       type: shape
     properties:
       minzoom: 10
-  - id: necountries
+  - id: world-hd-hydropolys
+    geometry: polygon
+    <<: *extents84
+    Datasource:
+      file: data/hydropolys/hydropolys.shp
+      type: shape
+    properties:
+      minzoom: 7
+      maxzoom: 11
+  - id: world-nelakes
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/10m-lakes/10m-lakes.shp
+      type: shape
+    properties:
+      maxzoom: 11
+  - id: world-roads
     geometry: linestring
     <<: *extents84
     Datasource:
-      file: data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
+      file: data/World_Roads/v104/roads.gdb
+      type: ogr
+      layer: roads
+    properties:
+      maxzoom: 11
+  - id: world-neroads-na
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      file: data/10m-roads-north-america/10m_roads_north_america.shp
       type: shape
     properties:
-      minzoom: 1
-      maxzoom: 3
+      maxzoom: 11
+  - id: world-necountries
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      file: data/10m-admin-0-boundary-lines-land/10m-admin-0-boundary-lines-land.shp
+      type: shape
+    properties:
+      maxzoom: 11
+  - id: world-neprovinces
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      file: data/10m-admin-1-states-provinces-lines/10m-admin-1-states-provinces-lines.shp
+      type: shape
+    properties:
+      maxzoom: 11
+  - id: world-nepopulated
+    geometry: point
+    <<: *extents
+    Datasource:
+      file: data/10m-populated-places/10m-populated-places.shp
+      type: shape
+    properties:
+      maxzoom: 11
+  - id: world-necountries-p
+    geometry: point
+    <<: *extents
+    Datasource:
+      file: data/10m-admin-0-country-points/10m-admin-0-country-points.shp
+      type: shape
+    properties:
+      maxzoom: 11
+  - id: world-neprovinces-p
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/ne_10m_admin_1_states_provinces_scale_rank/ne_10m_admin_1_states_provinces_scale_rank.shp
+      type: shape
+    properties:
+      maxzoom: 11
+
   - id: landcover-low-zoom
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -106,6 +181,7 @@ Layer:
       minzoom: 7
       maxzoom: 9
   - id: landcover
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -119,7 +195,7 @@ Layer:
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
-                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station', 
+                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
                                                     'fire_station', 'police') THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
@@ -159,6 +235,7 @@ Layer:
     properties:
       minzoom: 10
   - id: landcover-line
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -172,6 +249,7 @@ Layer:
     properties:
       minzoom: 14
   - id: water-lines-casing
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -190,6 +268,7 @@ Layer:
     properties:
       minzoom: 13
   - id: water-lines-low-zoom
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -208,6 +287,7 @@ Layer:
       minzoom: 8
       maxzoom: 11
   - id: icesheet-poly
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -216,6 +296,7 @@ Layer:
     properties:
       minzoom: 8
   - id: water-areas
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -243,6 +324,7 @@ Layer:
     properties:
       minzoom: 0
   - id: landcover-area-symbols
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -271,6 +353,7 @@ Layer:
     properties:
       minzoom: 8
   - id: icesheet-outlines
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -279,6 +362,7 @@ Layer:
     properties:
       minzoom: 8
   - id: springs
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -297,6 +381,7 @@ Layer:
     properties:
       minzoom: 14
   - id: water-lines
+    status: "off"
     class: water-lines
     geometry: linestring
     <<: *extents
@@ -320,6 +405,7 @@ Layer:
     properties:
       minzoom: 12
   - id: water-barriers-line
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -335,6 +421,7 @@ Layer:
     properties:
       minzoom: 13
   - id: water-barriers-poly
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -350,6 +437,7 @@ Layer:
     properties:
       minzoom: 13
   - id: marinas-area
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -363,6 +451,7 @@ Layer:
     properties:
       minzoom: 14
   - id: piers-poly
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -376,6 +465,7 @@ Layer:
     properties:
       minzoom: 12
   - id: piers-line
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -389,6 +479,7 @@ Layer:
     properties:
       minzoom: 12
   - id: water-barriers-point
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -402,6 +493,7 @@ Layer:
     properties:
       minzoom: 17
   - id: bridge
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -418,6 +510,7 @@ Layer:
     properties:
       minzoom: 12
   - id: buildings
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -440,6 +533,7 @@ Layer:
     properties:
       minzoom: 13
   - id: buildings-major
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -466,6 +560,7 @@ Layer:
     properties:
       minzoom: 13
   - id: tunnels
+    status: "off"
     class: access
     geometry: linestring
     <<: *extents
@@ -557,6 +652,7 @@ Layer:
       group-by: layernotnull
       minzoom: 10
   - id: landuse-overlay
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -573,6 +669,7 @@ Layer:
     properties:
       minzoom: 7
   - id: tourism-boundary
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -590,6 +687,7 @@ Layer:
     properties:
       minzoom: 10
   - id: line-barriers
+    status: "off"
     class: barriers
     geometry: linestring
     <<: *extents
@@ -612,6 +710,7 @@ Layer:
     properties:
       minzoom: 14
   - id: cliffs
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -625,6 +724,7 @@ Layer:
     properties:
       minzoom: 13
   - id: area-barriers
+    status: "off"
     class: barriers
     geometry: polygon
     <<: *extents
@@ -642,6 +742,7 @@ Layer:
     properties:
       minzoom: 16
   - id: ferry-routes
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -655,6 +756,7 @@ Layer:
     properties:
       minzoom: 8
   - id: turning-circle-casing
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -683,6 +785,7 @@ Layer:
     properties:
       minzoom: 15
   - id: highway-area-casing
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -692,7 +795,7 @@ Layer:
             way,
             COALESCE((
               'highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'track', 'path', 'platform') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN (railway IN ('platform') 
+              ('railway_' || (CASE WHEN (railway IN ('platform')
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -700,7 +803,7 @@ Layer:
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
-            OR (railway IN ('platform') 
+            OR (railway IN ('platform')
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -709,6 +812,7 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-casing
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -800,6 +904,7 @@ Layer:
     properties:
       minzoom: 10
   - id: highway-area-fill
+    status: "off"
     # FIXME: No geometry?
     <<: *extents
     Datasource:
@@ -810,7 +915,7 @@ Layer:
             COALESCE(
               ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street',
                                                     'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN (railway IN ('platform') 
+              ('railway_' || (CASE WHEN (railway IN ('platform')
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -819,7 +924,7 @@ Layer:
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
-            OR (railway IN ('platform') 
+            OR (railway IN ('platform')
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -829,6 +934,7 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-fill
+    status: "off"
     class: access
     geometry: linestring
     <<: *extents
@@ -926,6 +1032,7 @@ Layer:
     properties:
       minzoom: 10
   - id: turning-circle-fill
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -954,6 +1061,7 @@ Layer:
     properties:
       minzoom: 15
   - id: aerialways
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -969,6 +1077,7 @@ Layer:
     properties:
       minzoom: 12
   - id: roads-low-zoom
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1000,6 +1109,7 @@ Layer:
       minzoom: 6
       maxzoom: 9
   - id: waterway-bridges
+    status: "off"
     class: water-lines
     geometry: linestring
     <<: *extents
@@ -1023,6 +1133,7 @@ Layer:
     properties:
       minzoom: 12
   - id: bridges
+    status: "off"
     class: access
     geometry: linestring
     <<: *extents
@@ -1112,6 +1223,7 @@ Layer:
       group-by: layernotnull
       minzoom: 10
   - id: guideways
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1125,6 +1237,7 @@ Layer:
     properties:
       minzoom: 11
   - id: entrances
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1142,6 +1255,7 @@ Layer:
     properties:
       minzoom: 18
   - id: aeroways
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1159,6 +1273,7 @@ Layer:
     properties:
       minzoom: 11
   - id: admin-low-zoom
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1177,6 +1292,7 @@ Layer:
       minzoom: 4
       maxzoom: 10
   - id: admin-mid-zoom
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1195,6 +1311,7 @@ Layer:
       minzoom: 11
       maxzoom: 12
   - id: admin-high-zoom
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1212,6 +1329,7 @@ Layer:
     properties:
       minzoom: 13
   - id: power-minorline
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1225,6 +1343,7 @@ Layer:
     properties:
       minzoom: 16
   - id: power-line
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1239,6 +1358,7 @@ Layer:
     properties:
       minzoom: 14
   - id: nature-reserve-boundaries
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1257,6 +1377,7 @@ Layer:
     properties:
       minzoom: 8
   - id: trees
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1275,6 +1396,7 @@ Layer:
     properties:
       minzoom: 16
   - id: country-names
+    status: "off"
     class: country
     geometry: point
     <<: *extents
@@ -1295,6 +1417,7 @@ Layer:
     properties:
       minzoom: 2
   - id: capital-names
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1317,6 +1440,7 @@ Layer:
       minzoom: 3
       maxzoom: 15
   - id: state-names
+    status: "off"
     class: state
     geometry: point
     <<: *extents
@@ -1338,6 +1462,7 @@ Layer:
     properties:
       minzoom: 4
   - id: placenames-medium
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1382,6 +1507,7 @@ Layer:
       minzoom: 4
       maxzoom: 15
   - id: placenames-small
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1415,6 +1541,7 @@ Layer:
     properties:
       minzoom: 12
   - id: stations
+    status: "off"
     class: stations
     geometry: point
     <<: *extents
@@ -1441,6 +1568,7 @@ Layer:
     properties:
       minzoom: 12
   - id: stations-poly
+    status: "off"
     class: stations
     geometry: polygon
     <<: *extents
@@ -1460,6 +1588,7 @@ Layer:
     properties:
       minzoom: 12
   - id: amenity-points-poly
+    status: "off"
     class: points
     geometry: polygon
     <<: *extents
@@ -1486,9 +1615,9 @@ Layer:
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table',
-                                                  'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 
+                                                  'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                   'bowling_alley', 'outdoor_seating', 'bird_hide') THEN leisure ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney') 
+              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
@@ -1528,7 +1657,7 @@ Layer:
                                'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery',
                                'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor',
                                'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 'pastry', 'chocolate',
-                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 
+                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
                                'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                ELSE 'other' END AS shop,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
@@ -1543,7 +1672,7 @@ Layer:
             OR (tags->'office') IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'fitness_centre',
                            'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley', 'outdoor_seating', 'bird_hide')
-            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney') 
+            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
@@ -1556,6 +1685,7 @@ Layer:
     properties:
       minzoom: 10
   - id: amenity-line
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1578,6 +1708,7 @@ Layer:
     properties:
       minzoom: 16
   - id: amenity-points
+    status: "off"
     class: points
     geometry: point
     <<: *extents
@@ -1605,7 +1736,7 @@ Layer:
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
-                                                  'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 
+                                                  'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                   'bowling_alley', 'outdoor_seating', 'bird_hide') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
@@ -1641,7 +1772,7 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             CASE
-              WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) 
+              WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
                     OR waterway IN ('waterfall') THEN
                 CASE
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
@@ -1666,7 +1797,7 @@ Layer:
                                'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery',
                                'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor',
                                'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 'pastry', 'chocolate',
-                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 
+                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
                                'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                ELSE 'other' END AS shop,
             NULL AS way_pixels
@@ -1683,7 +1814,7 @@ Layer:
                            'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                            'bowling_alley', 'outdoor_seating', 'bird_hide')
             OR barrier IN ('toll_booth')
-            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'chimney') 
+            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'chimney')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
             OR waterway IN ('waterfall')
@@ -1699,6 +1830,7 @@ Layer:
     properties:
       minzoom: 10
   - id: power-towers
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1712,6 +1844,7 @@ Layer:
     properties:
       minzoom: 14
   - id: power-poles
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1725,6 +1858,7 @@ Layer:
     properties:
       minzoom: 16
   - id: roads-text-ref-low-zoom
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1777,6 +1911,7 @@ Layer:
       minzoom: 10
       maxzoom: 12
   - id: junctions
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -1806,6 +1941,7 @@ Layer:
     properties:
       minzoom: 11
   - id: bridge-text
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1823,6 +1959,7 @@ Layer:
     properties:
       minzoom: 11
   - id: roads-text-ref
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1877,6 +2014,7 @@ Layer:
     properties:
       minzoom: 13
   - id: roads-area-text-name
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1891,7 +2029,7 @@ Layer:
             name
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
-            OR (railway IN ('platform') 
+            OR (railway IN ('platform')
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -1903,6 +2041,7 @@ Layer:
     properties:
       minzoom: 15
   - id: roads-text-name
+    status: "off"
     class: directions
     geometry: linestring
     <<: *extents
@@ -1958,6 +2097,7 @@ Layer:
     properties:
       minzoom: 13
   - id: paths-text-name
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1974,6 +2114,7 @@ Layer:
     properties:
       minzoom: 15
   - id: railways-text-name
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2005,6 +2146,7 @@ Layer:
     properties:
       minzoom: 11
   - id: text-poly-low-zoom
+    status: "off"
     class: text-low-zoom
     geometry: polygon
     <<: *extents
@@ -2038,6 +2180,7 @@ Layer:
       minzoom: 0
       maxzoom: 9
   - id: text-poly
+    status: "off"
     class: text
     geometry: polygon
     <<: *extents
@@ -2071,20 +2214,20 @@ Layer:
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys',
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages',
                                             'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea',
-                                            'coffee', 'tyres', 'pastry', 'chocolate', 'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 
+                                            'coffee', 'tyres', 'pastry', 'chocolate', 'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket',
                                             'charity', 'second_hand', 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
-                                                  'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 
+                                                  'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                   'bowling_alley', 'outdoor_seating', 'bird_hide') THEN leisure ELSE NULL END,
               'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
                                                   'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland',
                                                   'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
                                                   'construction', 'military', 'plant_nursery', 'religious') THEN landuse ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works', 'communications_tower', 'chimney') 
+              'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works', 'communications_tower', 'chimney')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                     'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier') THEN "natural" ELSE NULL END,
@@ -2156,6 +2299,7 @@ Layer:
     properties:
       minzoom: 10
   - id: text-line
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2180,6 +2324,7 @@ Layer:
     properties:
       minzoom: 10
   - id: text-point
+    status: "off"
     class: text
     geometry: point
     <<: *extents
@@ -2240,13 +2385,13 @@ Layer:
                                                 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts',
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics',
                                                 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres',
-                                                'pastry', 'chocolate', 'music', 'medical_supply','dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 
+                                                'pastry', 'chocolate', 'music', 'medical_supply','dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
                                                 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                   WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
                   'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
-                                                      'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 
+                                                      'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                       'bowling_alley', 'outdoor_seating', 'bird_hide') THEN leisure ELSE NULL END,
                   'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
@@ -2343,6 +2488,7 @@ Layer:
     properties:
       minzoom: 10
   - id: building-text
+    status: "off"
     geometry: polygon
     <<: *extents
     Datasource:
@@ -2361,6 +2507,7 @@ Layer:
     properties:
       minzoom: 14
   - id: interpolation
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2374,6 +2521,7 @@ Layer:
     properties:
       minzoom: 17
   - id: addresses
+    status: "off"
     geometry: point
     <<: *extents
     Datasource:
@@ -2402,6 +2550,7 @@ Layer:
     properties:
       minzoom: 17
   - id: water-lines-text
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2426,6 +2575,7 @@ Layer:
     properties:
       minzoom: 13
   - id: ferry-routes-text
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2441,6 +2591,7 @@ Layer:
     properties:
       minzoom: 13
   - id: admin-text
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2459,6 +2610,7 @@ Layer:
     properties:
       minzoom: 16
   - id: nature-reserve-text
+    status: "off"
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2475,6 +2627,7 @@ Layer:
     properties:
       minzoom: 13
   - id: amenity-low-priority
+    status: "off"
     class: amenity-low-priority
     geometry: point
     <<: *extents
@@ -2506,6 +2659,7 @@ Layer:
     properties:
       minzoom: 14
   - id: amenity-low-priority-poly
+    status: "off"
     class: amenity-low-priority
     geometry: polygon
     <<: *extents
