@@ -59,7 +59,8 @@ datasources = {
     ''',
     'natural': '''
     (
-        way[natural];
+        way[natural][natural!~'(water)|(lake)|(land)|(glacier)|(mud)|(marsh)|(wetland)'];
+        rel[natural][natural!~'(water)|(lake)|(land)|(glacier)|(mud)|(marsh)|(wetland)'];
     );
     ''',
     'building': '''
@@ -79,7 +80,6 @@ datasources = {
         node["natural"="land"];  way["natural"="land"];  rel["natural"="land"];
         node["natural"="glacier"];  way["natural"="glacier"];  rel["natural"="glacier"];
         node["natural"="mud"];  way["natural"="mud"];  rel["natural"="mud"];
-        node["natural"="marsh"];  way["natural"="marsh"];  rel["natural"="marsh"];
         node["natural"="marsh"];  way["natural"="marsh"];  rel["natural"="marsh"];
         node["natural"="wetland"];  way["natural"="wetland"];  rel["natural"="wetland"];
     );

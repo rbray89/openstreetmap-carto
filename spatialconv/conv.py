@@ -15,7 +15,7 @@ COLUMNS = ['name', 'ref', 'ele', 'place', 'natural', 'water', 'landuse',
             'military', 'religion', 'building', 'amenity', 'shop', 'barrier',
             'waterway', 'railway', 'aerialway', 'aeroway', 'highway', 'bridge', 'tunnel',
             'lock', 'layer', 'covered', 'surface', 'junction', 'route', 'oneway',
-            'seasonal', 'intermittent', 'operator',
+            'seasonal', 'intermittent', 'operator', 'area',
             'wetland', 'location',
             'admin_level', 'boundary',
             'usage', 'highspeed',
@@ -152,7 +152,6 @@ def _fetchDB(dbfile):
         sql += ','.join(['{} TEXT'.format(c) for c in COLUMNS])
         sql += ',z_order INTEGER'
         sql += ',way_area DOUBLE PRECISION,'
-        sql += 'FOREIGN KEY(osm_way_id) REFERENCES lines(id),'
         sql += 'FOREIGN KEY(osm_relation_id) REFERENCES relations(id))'
         cur.execute(sql)
         print 'creating polygon geometry...'
@@ -447,10 +446,21 @@ def toSpatial(source, dest):
                 id as osm_way_id,
                 {1},
                 CastToMultiPolygon(BuildArea(way)) as geom
-                from lines where IsClosed(way));
+                from lines
+                where IsClosed(way)
+                AND (area IN ('yes')
+                    OR (highway IS NULL
+                        AND waterway IS NULL
+                        AND railway IS NULL
+                        AND aerialway IS NULL
+                        AND aeroway IS NULL
+                        AND route IS NULL)));
+        DELETE FROM lines WHERE EXISTS (SELECT osm_way_id
+                                  FROM polygons
+                                  WHERE lines.id = polygons.osm_way_id);
         COMMIT;'''
     sql = sql.format(','.join(COLUMNS), ','.join(["{0}".format(c) for c in COLUMNS]))
-        # DELETE FROM lines WHERE IsClosed(geom);
+
     cur.executescript(sql)
     conn.commit()
 
