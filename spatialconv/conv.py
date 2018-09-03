@@ -15,32 +15,66 @@ COLUMNS = ['name', 'ref', 'ele', 'place', 'natural', 'water', 'landuse',
             'military', 'religion', 'building', 'amenity', 'shop', 'barrier',
             'waterway', 'railway', 'aerialway', 'aeroway', 'highway', 'bridge', 'tunnel',
             'lock', 'layer', 'covered', 'surface', 'junction', 'route', 'oneway',
-            'intermittent', 'operator',
+            'seasonal', 'intermittent', 'operator',
+            'wetland', 'location',
+            'admin_level', 'boundary',
+            'usage', 'highspeed',
+            'power', 'leaf_type', 'public_transport', 'indoor', 'entrance',
             'tracktype', 'horse', 'bicycle', 'foot', 'construction']
 
 Z_ORDER = {
+    'railway': {
+        'rail': 440,
+        'INT-preserved-ssy': 430,
+        'INT-spur-siding-yard': 430,
+        'subway': 420,
+        'narrow_gauge': 420,
+        'light_rail': 420,
+        'preserved': 420,
+        'funicular': 420,
+        'monorail': 420,
+        'miniature': 420,
+        'turntable': 420,
+        'tram': 410,
+        'tram-service': 405,
+        'disused': 400,
+        'construction': 400,
+        'platform': 90
+    },
     'highway': {
-        'track': 0,
-        'bridleway': 1,
-        'footway': 2,
-        'path': 3,
-        'cycleway': 4,
-        'residential': 5,
-        'unclassified': 6,
-        'tertiary_link': 7,
-        'tertiary': 8,
-        'secondary_link': 9,
-        'secondary': 10,
-        'primary_link': 11,
-        'primary': 12,
-        'trunk_link': 13,
-        'trunk': 14,
-        'motorway_link': 15,
-        'motorway': 16
+        'motorway': 380,
+        'trunk': 370,
+        'primary': 360,
+        'secondary': 350,
+        'tertiary': 340,
+        'residential': 330,
+        'unclassified': 330,
+        'road': 330,
+        'living_street': 320,
+        'pedestrian': 310,
+        'raceway': 300,
+        'motorway_link': 240,
+        'trunk_link': 230,
+        'primary_link': 220,
+        'secondary_link': 210,
+        'tertiary_link': 200,
+        'service': 150,
+        'track': 110,
+        'path': 100,
+        'footway': 100,
+        'bridleway': 100,
+        'cycleway': 100,
+        'steps': 100,
+        'platform': 90,
+        'construction': 10
+    },
+    'aeroway': {
+        'runway': 60,
+        'taxiway': 50
     }
 }
 
-LAYER_Z_OFFSET = 100
+LAYER_Z_OFFSET = 500
 
 
 def _fetchDB(dbfile):
@@ -70,7 +104,9 @@ def _fetchDB(dbfile):
         sql = 'CREATE TABLE IF NOT EXISTS points ('
         sql += 'id INTEGER NOT NULL PRIMARY KEY,'
         sql += ','.join(['{} TEXT'.format(c) for c in COLUMNS])
-        sql += ',z_order INTEGER'
+        sql += ',tc_id INTEGER,'
+        sql += 'z_order INTEGER,'
+        sql += 'FOREIGN KEY(tc_id) REFERENCES lines(id)'
         sql += ')'
         cur.execute(sql)
 
@@ -364,39 +400,56 @@ def toSpatial(source, dest):
             msg += "{} SRID={}".format(row[1], row[2])
             print msg
 
+    sql = '''
+    UPDATE points
+    SET tc_id = (SELECT id
+                      FROM lines
+                      WHERE PtDistWithin(points.way, way, 0.1)
+                      AND (points.highway = 'turning_circle' OR points.highway = 'turning_loop'))
+    where EXISTS (SELECT id
+                      FROM lines
+                      WHERE PtDistWithin(points.way, way, 0.1)
+                      AND (points.highway = 'turning_circle' OR points.highway = 'turning_loop'))
+    '''
+    cur.execute(sql)
+    conn.commit()
+
     # convert relations to polygons...
     sql = '''INSERT OR IGNORE INTO polygons (osm_relation_id, {}, way_area, way)
-                select relations_join.id osm_relation_id,
+                select
+                osm_relation_id,
                 {},
-                Area(way) way_area,
-                CastToMultiPolygon(Polygonize(way)) way
+                Area(geom) way_area,
+                geom way
+                from (SELECT
+                relations_join.id as osm_relation_id,
+                {},
+                CastToMultiPolygon(Polygonize(way)) as geom
                 from relations_join, lines, relations
-                where lines.id = relations_join.member_way_id and relations.id = relations_join.id and relations.type in ('polygon','multipolygon') group by relations_join.id'''
-    sql = sql.format(','.join(COLUMNS), ','.join(["relations.{0} '{0}'".format(c) for c in COLUMNS]))
+                where lines.id = relations_join.member_way_id
+                and relations.id = relations_join.id
+                and relations.type in ('polygon','multipolygon') group by relations_join.id)
+                '''
+    sql = sql.format(','.join(COLUMNS), ','.join(["{0}".format(c) for c in COLUMNS]), ','.join(["relations.{0} as '{0}'".format(c) for c in COLUMNS]))
     cur.execute(sql)
     conn.commit()
 
 
     # add closed lines to polygons...
     sql = '''BEGIN TRANSACTION;
-        INSERT OR IGNORE INTO polygons (osm_way_id, name, ref, natural, waterway, water, landuse, building, disused, tunnel, lock, bridge, highway, way_area, way)
-            select id osm_way_id,
-                    name name,
-                    ref ref,
-                    natural 'natural',
-                    waterway waterway,
-                    water water,
-                    landuse landuse,
-                    building building,
-                    disused disused,
-                    tunnel tunnel,
-                    lock lock,
-                    bridge bridge,
-                    highway highway,
-                    Area(way) way_area,
-                    CastToMultiPolygon(BuildArea(way)) way
-            from lines where IsClosed(way);
+        INSERT OR IGNORE INTO polygons (osm_way_id, {0}, way_area, way)
+            select
+            osm_way_id,
+            {1},
+            Area(geom) way_area,
+            geom way
+            from (SELECT
+                id as osm_way_id,
+                {1},
+                CastToMultiPolygon(BuildArea(way)) as geom
+                from lines where IsClosed(way));
         COMMIT;'''
+    sql = sql.format(','.join(COLUMNS), ','.join(["{0}".format(c) for c in COLUMNS]))
         # DELETE FROM lines WHERE IsClosed(geom);
     cur.executescript(sql)
     conn.commit()

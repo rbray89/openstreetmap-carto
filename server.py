@@ -27,7 +27,7 @@ emptymapfile = 'empty-mapnik.xml'
 emptymapstring = ''
 emptydb = 'www/empty.spatialite'
 emptyosm = 'www/empty.osm'
-
+DB_REPLACE = 'test_db4.sqlite'
 dbFormat = 'www/{}/{}/{}.spatialite'
 osmFormat = 'www/{}/{}/{}-{}.osm'
 
@@ -64,7 +64,7 @@ datasources = {
     ''',
     'building': '''
     (
-        way[building];
+        way[building];rel[building];
     );
     ''',
     'water': '''
@@ -372,7 +372,7 @@ class TileGenJob(object):
                 topy /= 2
             for source in datasources:
                 sdb = dbJobQueue.get(topx, topy, topz, source)
-            mapstring = mapstring.replace('osm-data-source.sqlite', sdb)
+            mapstring = mapstring.replace(DB_REPLACE, sdb)
         else:
             mapstring = emptymapstring
 
@@ -447,7 +447,7 @@ def mapSetup():
         emptymapstring = ''
         with open(mapfile, 'r') as f:
             emptymapstring = f.read()
-            emptymapstring = emptymapstring.replace('osm-data-source.sqlite', emptydb)
+            emptymapstring = emptymapstring.replace(DB_REPLACE, emptydb)
     else:
         with open(emptymapfile, 'r') as f:
             f.write(emptymapstring)
