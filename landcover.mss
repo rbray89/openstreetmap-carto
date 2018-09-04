@@ -1,68 +1,20 @@
-// --- Parks, woods, other green things ---
-
-@grass: #cdebb0; // also grassland, meadow, common, village_green, garden
-@scrub: #b5e3b5;
-@forest: #add19e;       // Lch(80,30,135)
-@forest-text: #46673b;  // Lch(40,30,135)
-@park: #c8facc;         // Lch(94,30,145)
-@orchard: #aedfa3; // also vineyard, plant_nursery
-
-// --- "Base" landuses ---
-
-@built-up-lowzoom: #aaaaaa;
-@built-up-z11: #c0c0c0;
-@built-up-z12: #d0d0d0;
-@residential: #e0dfdf;      // Lch(89,0,0)
-@residential-line: #b9b9b9; // Lch(75,0,0)
-@retail: #ffd6d1;           // Lch(89,16,30)
-@retail-line: #d99c95;      // Lch(70,25,30)
-@commercial: #f2dad9;       // Lch(89,8.5,25)
-@commercial-line: #d1b2b0;  // Lch(75,12,25)
-@industrial: #ebdbe8;       // Lch(89,9,330) (Also used for railway)
-@industrial-line: #c6b3c3;  // Lch(75,11,330) (Also used for railway-line)
-@farmland: #fbecd7;         // Lch(94,12,80)
-@farmland-line: #d6c4ab;    // Lch(80,15,80)
-@farmyard: #f5dcba;         // Lch(89,20,80)
-@farmyard-line: #d1b48c;    // Lch(75,25,80)
 
 // --- Transport ----
 
-@transportation-area: #e9e7e2;
-@apron: #e9d1ff;
-@garages: #dfddce;
-@parking: #eeeeee;
 @parking-outline: saturate(darken(@parking, 40%), 20%);
 @railway: @industrial;
 @railway-line: @industrial-line;
-@rest_area: #efc8c8; // also services
 
 // --- Other ----
 
-@allotments: #eecfb3;       // Lch(85,19,70)
-@bare_ground: #eee5dc;
-@campsite: #def6c0; // also caravan_site, picnic_site
-@cemetery: #aacbaf; // also grave_yard
-@construction: #c7c7b4; // also brownfield
-@heath: #d6d99f;
-@mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
-@place_of_worship: #cdccc9;
-@place_of_worship_outline: #111;
 @leisure: lighten(@park, 5%);
 @power: darken(@industrial, 5%);
 @power-line: darken(@industrial-line, 5%);
-@sand: #f5e9c6;
-@societal_amenities: #f0f0d8;
-@tourism: #734a08;
-@quarry: #c5c3c3;
-@military: #f55;
-@beach: #fff1ba;
 
 // --- Sports ---
 
-@pitch: #aae0cb; // also track
 @track: @pitch;
-@stadium: @leisure; // also sports_centre
-@golf_course: #b5e3b5;
+@stadium: @leisure;
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
@@ -553,12 +505,12 @@
   [feature = 'amenity_fire_station'][zoom >= 13],
   [feature = 'amenity_police'][zoom >= 13] {
     polygon-fill: #F3E3DD;
-    line-color: @military; 
+    line-color: @military;
     line-opacity: 0.24;
-    line-width: 1.0; 
+    line-width: 1.0;
     line-offset: -0.5;
     [zoom >= 15] {
-      line-width: 2; 
+      line-width: 2;
       line-offset: -1.0;
     }
   }

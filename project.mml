@@ -44,6 +44,7 @@ _parts:
 
 Stylesheet:
   - style.mss
+  - source-colors.mss
   - fonts.mss
   - shapefiles.mss
   - landcover.mss
