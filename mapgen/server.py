@@ -8,6 +8,7 @@
 # pip install overpass
 
 from mapnik import *
+import gdal
 import math
 import shutil
 from os.path import dirname, basename, splitext, join, exists
@@ -424,6 +425,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 
 def mapSetup():
+    gdal.SetCacheMax(500000000)
     global emptymapstring
     if not exists(emptydb) and not exists(emptyosm):
         response = '''

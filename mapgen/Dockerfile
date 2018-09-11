@@ -129,9 +129,11 @@ RUN apk add --no-cache \
     libpng \
     libwebp \
     sqlite \
-    freetype-dev \
-    gdal-dev \
-    harfbuzz-dev \
+    freetype \
+    libxml2 \
+    gdal \
+    py-gdal \
+    harfbuzz \
     py-setuptools \
     font-noto
 
