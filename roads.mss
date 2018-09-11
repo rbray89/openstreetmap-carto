@@ -3,6 +3,10 @@
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 
+@service-fill:   @residential-fill;
+@steps-fill: @footway-fill;
+
+@bridge-casing: @dark;
 @road-casing: @residential-casing;
 @service-casing: @residential-casing;
 @living-street-casing: @residential-casing;
@@ -911,7 +915,7 @@
     [feature = 'railway_monorail'][zoom >= 14] {
       #bridges {
         line-width: 5;
-        line-color: white;
+        line-color: @light;
         line-join: round;
       }
     }
@@ -920,7 +924,7 @@
       #bridges {
         [zoom >= 13] {
           line-width: 4;
-          line-color: white;
+          line-color: @light;
           line-join: round;
         }
       }
@@ -933,7 +937,7 @@
       #bridges {
         [zoom >= 13] {
           line-width: 4.5;
-          line-color: white;
+          line-color: @light;
           line-join: round;
         }
       }
@@ -947,7 +951,7 @@
           [zoom >= 15] {
             line-width: 4;
           }
-          line-color: white;
+          line-color: @light;
         }
       }
     }
@@ -956,7 +960,7 @@
       #bridges {
         [zoom >= 14] {
           line-width: 4;
-          line-color: white;
+          line-color: @light;
           line-join: round;
         }
       }
@@ -968,7 +972,7 @@
       #bridges {
         [zoom >= 14] {
           line-width: 4;
-          line-color: white;
+          line-color: @light;
           line-join: round;
         }
       }
@@ -1106,7 +1110,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         b/line-width: 2;
         b/line-dasharray: 4,2;
-        b/line-color: white;
+        b/line-color: @light;
         [zoom >= 13] {
           line-width: 4;
           b/line-width: 3.5;
@@ -1127,7 +1131,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             line-width: 0;
             b/line-width: 0;
           }
-          line-color: white;
+          line-color: @light;
           line-width: 3;
           line-opacity: 0.4;
           b/line-width: 1.2;
@@ -1808,7 +1812,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 13] {
         #roads-fill, #bridges {
           dark/line-join: round;
-          light/line-color: white;
+          light/line-color: @light;
           light/line-join: round;
           [feature = 'railway_rail'] {
             dark/line-color: #707070;
@@ -1944,7 +1948,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           dark/line-width: 3;
           dark/line-color: #999999;
           light/line-width: 1;
-          light/line-color: white;
+          light/line-color: @light;
           light/line-dasharray: 0,1,8,1;
           light/line-join: round;
         }
@@ -1960,7 +1964,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           dark/line-width: 2;
           dark/line-color: #999999;
           light/line-width: 0.8;
-          light/line-color: white;
+          light/line-color: @light;
           light/line-dasharray: 0,1,8,1;
           light/line-join: round;
         }
@@ -2386,7 +2390,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: black;
+      text-fill: @dark;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
@@ -2413,7 +2417,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 10;
       text-wrap-width: 30; // 3 em
       text-line-spacing: -1.2; // -0.15 em
-      text-fill: black;
+      text-fill: @dark;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
@@ -2563,7 +2567,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     line-color: #6699ff;
     line-join: round;
     b/line-width: 1;
-    b/line-color: white;
+    b/line-color: @light;
     b/line-dasharray: 8,12;
     b/line-join: round;
   }
@@ -2790,7 +2794,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
-      text-fill: black;
+      text-fill: @dark;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2820,7 +2824,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
-      text-fill: black;
+      text-fill: @dark;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2846,7 +2850,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
-      text-fill: black;
+      text-fill: @dark;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2864,7 +2868,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [highway = 'construction'][construction = null][zoom >= 16] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: black;
+    text-fill: @dark;
     text-spacing: 300;
     text-clip: false;
     text-placement: line;
@@ -2890,7 +2894,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
-      text-fill: black;
+      text-fill: @dark;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2918,7 +2922,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
-      text-fill: black;
+      text-fill: @dark;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2939,7 +2943,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
-      text-fill: black;
+      text-fill: @dark;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;

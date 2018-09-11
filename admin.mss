@@ -14,7 +14,7 @@ overlapping borders correctly.
   [admin_level = '2'] {
     [zoom >= 4] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-color: @light;
       background/line-width: 1.2;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -45,7 +45,7 @@ overlapping borders correctly.
   [admin_level = '3'] {
     [zoom >= 4] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-color: @light;
       background/line-width: 0.6;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -70,7 +70,7 @@ overlapping borders correctly.
   [admin_level = '4'] {
     [zoom >= 4] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-color: @light;
       background/line-width: 0.4;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -126,7 +126,7 @@ overlapping borders correctly.
 #admin-high-zoom[zoom >= 13] {
   [admin_level = '5'][zoom >= 11] {
     background/line-join: bevel;
-    background/line-color: white;
+    background/line-color: @light;
     background/line-width: 2;
     background/line-simplify: @admin-simplify;
     background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -140,7 +140,7 @@ overlapping borders correctly.
   }
   [admin_level = '6'][zoom >= 11] {
     background/line-join: bevel;
-    background/line-color: white;
+    background/line-color: @light;
     background/line-width: 2;
     background/line-simplify: @admin-simplify;
     background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -156,7 +156,7 @@ overlapping borders correctly.
   [admin_level = '8'] {
     [zoom >= 12] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-color: @light;
       background/line-width: 1.5;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -178,7 +178,7 @@ overlapping borders correctly.
   [admin_level = '10'] {
     [zoom >= 13] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-color: @light;
       background/line-width: 2;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -229,13 +229,13 @@ overlapping borders correctly.
     }
     a/line-width: 1;
     a/line-offset: -0.5;
-    a/line-color: green;
+    a/line-color: @nature-reserve-casing;
     a/line-opacity: 0.15;
     a/line-join: round;
     a/line-cap: round;
     b/line-width: 2;
     b/line-offset: -1;
-    b/line-color: green;
+    b/line-color: @nature-reserve-casing;
     b/line-opacity: 0.15;
     b/line-join: round;
     b/line-cap: round;

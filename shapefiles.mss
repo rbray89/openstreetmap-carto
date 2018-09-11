@@ -124,7 +124,7 @@
   [zoom>=6][SCALERANK<=5],
   [zoom>=8][SCALERANK<=6],
   [zoom>=8][SCALERANK>=7]{
-    line-color: grey;
+    line-color: @admin-boundaries;
     line-dasharray:2,2;
     line-cap:butt;
     line-width: .5;
@@ -159,7 +159,7 @@
     line-width: 0.5;
     [zoom = 2]{line-width: 0.25;}
     [zoom = 3]{line-width: 0.3;}
-    line-color: grey;
+    line-color: @dmin-text;
   }
 }
 

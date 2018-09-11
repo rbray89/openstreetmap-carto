@@ -1,0 +1,14 @@
+{
+  "name": "MapGen",
+  "version": "0.3",
+  "slug": "map_gen",
+  "description": "Map tile generator",
+  "startup": "before",
+  "boot": "auto",
+  "options": {},
+  "schema": {},
+  "map": ["share"],
+  "ports": {
+    "8000/tcp": 8000
+  }
+}

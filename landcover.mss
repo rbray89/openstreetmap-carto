@@ -79,7 +79,7 @@
     polygon-pattern-file: url('symbols/quarry.svg');
     [zoom >= 13] {
       line-width: 0.5;
-      line-color: grey;
+      line-color: @quarry-casing;
     }
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
@@ -178,7 +178,7 @@
   [feature = 'amenity_prison'][zoom >= 10][way_pixels > 75] {
     polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
     polygon-pattern-alignment: global;
-    line-color: #888;
+    line-color: @prision-casing;
     line-width: 3;
     line-opacity: 0.329;
   }
@@ -723,7 +723,7 @@
 
 #area-barriers {
   [zoom >= 16] {
-    line-color: #444;
+    line-color: @barriers-casing;
     line-width: 0.4;
     [feature = 'barrier_hedge'] {
       polygon-fill: #aed1a0;
@@ -734,27 +734,27 @@
 .barriers {
   [zoom >= 16] {
     line-width: 0.4;
-    line-color: #444;
+    line-color: @barriers-casing;
   }
   [feature = 'barrier_embankment'][zoom >= 14] {
     line-width: 0.4;
-    line-color: #444;
+    line-color: @barriers-casing;
   }
   [feature = 'barrier_hedge'][zoom >= 16] {
     line-width: 3;
-    line-color: #aed1a0;
+    line-color: @barriers-hedge-casing;
   }
   [feature = 'historic_citywalls'],
   [feature = 'barrier_city_wall'] {
     [zoom >= 15] {
       line-width: 1.5;
-      line-color: lighten(#444, 30%);
+      line-color: lighten(@barriers-casing, 30%);
     }
 
     [zoom >= 17] {
       line-width: 3;
       barrier/line-width: 0.4;
-      barrier/line-color: #444;
+      barrier/line-color: @barriers-casing;
     }
   }
 }

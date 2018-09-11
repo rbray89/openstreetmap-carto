@@ -314,7 +314,7 @@
       text-line-spacing: -0.70; // -0.05 em
       text-margin: 9.8; // 0.7 em
       text-fill: @placenames-light;
-      text-halo-fill: white;
+      text-halo-fill: @light;
     }
     [zoom >= 16] {
       text-size: 15;
@@ -345,7 +345,7 @@
       }
       [zoom >= 14] {
         text-fill: @placenames-light;
-        text-halo-fill: white;
+        text-halo-fill: @light;
         text-size: 13;
         text-wrap-width: 65; // 5.0 em
         text-line-spacing: -0.65; // -0.05 em
@@ -376,7 +376,7 @@
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
       [zoom >= 14] {
-        text-halo-fill: white;
+        text-halo-fill: @light;
         text-size: 11;
         text-wrap-width: 55; // 5.0 em
         text-line-spacing: -0.55; // -0.05 em
@@ -422,7 +422,7 @@
       text-line-spacing: -0.60; // -0.05 em
       text-margin: 8.4; // 0.7 em
       text-fill: @placenames-light;
-      text-halo-fill: white;
+      text-halo-fill: @light;
     }
   }
   [place = 'square'] {

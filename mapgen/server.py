@@ -4,6 +4,7 @@
 # https://github.com/mapnik/python-mapnik
 # export BOOST_PYTHON_LIB=boost_python
 # python setup.py install --prefix=~/.local
+# RUN apk add --no-cache python3
 # pip install overpass
 
 from mapnik import *
@@ -393,8 +394,7 @@ class TileGenJob(object):
         m.resize(render_size, render_size)
         print 'zoom...'
         m.zoom_to_box(bounds)
-        r = max((12 - z), 3)
-        m.buffer_size = render_size / r
+        m.buffer_size = render_size/2
         print 'render & write...'
         render_to_file(m, local, 'png')
         # im = Image(render_size, render_size)

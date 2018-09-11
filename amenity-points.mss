@@ -1371,7 +1371,7 @@
     [zoom >= 15] {
       marker-file: url('symbols/power_wind.svg');
       marker-placement: interior;
-      marker-fill: black;
+      marker-fill: @dark;
       marker-clip: false;
     }
   }
@@ -1795,7 +1795,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: black;
+    text-fill: @dark;
     [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
     [feature = 'historic_wayside_cross'] {
@@ -2918,7 +2918,7 @@
   [feature = 'attraction_water_slide'] {
     [zoom >= 16] {
       [zoom >= 17] {
-        bridgecasing/line-color: black;
+        bridgecasing/line-color: @dark;
         bridgecasing/line-join: round;
         bridgecasing/line-smooth: 1;
         bridgecasing/line-width: 1.25;

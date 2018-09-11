@@ -2012,6 +2012,7 @@ Layer:
     properties:
       minzoom: 13
   - id: paths-text-name
+    status: "off"
     geometry: linestring
     <<: *extents84
     Datasource:

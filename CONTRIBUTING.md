@@ -49,11 +49,11 @@ the YAML file with `node index.js serve path/to/openstreetmap-carto/project.mml`
 #layer {
   ::outline {
     line-width: 6;
-    line-color: black;
+    line-color: @dark;
   }
   ::inline {
     line-width: 2;
-    line-color: white;
+    line-color: @light;
   }
 }
 ```
@@ -62,11 +62,11 @@ instead of
 ```mss
 #layer::outline {
     line-width: 6;
-    line-color: black;
+    line-color: @dark;
 }
 #layer::inline {
     line-width: 2;
-    line-color: white;
+    line-color: @light;
 }
 ```
 * Order the selectors in a style-sheet in rough order of importance (i.e.,
@@ -79,7 +79,7 @@ instead of
 ```mss
 #layer[feature = 'foo'][zoom >= 13] {
   line-width: 6;
-  line-color: black;
+  line-color: @dark;
   [zoom >= 15] {
     line-width: 7;
   }
@@ -92,7 +92,7 @@ instead of
 ```mss
 #layer[feature = 'foo'][zoom >= 13] {
   line-width: 10;
-  line-color: black;
+  line-color: @dark;
   [zoom < 18] {
     line-width: 7;
     [zoom < 16] {

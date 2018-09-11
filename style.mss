@@ -3,3 +3,5 @@ Map {
 }
 
 @standard-halo-radius: 1;
+
+@default-casing:          @light;
