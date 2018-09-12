@@ -28,6 +28,10 @@ _parts:
     extent: *world
     srs-name: "WGS84"
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+  extentsbuiltup: &extentsbuiltup
+    extent: *world
+    srs-name: "extentsbuiltup"
+    srs: "+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
     dbname: "gis"
@@ -70,6 +74,15 @@ Layer:
         type: shape
     properties:
     maxzoom: 11
+  - id: world-hd-hydropolys
+    geometry: polygon
+    <<: *extents84
+    Datasource:
+      file: data/hydropolys/hydropolys.shp
+      type: shape
+    properties:
+      minzoom: 7
+      maxzoom: 11
   - id: world-water
     geometry: polygon
     <<: *extents
@@ -86,20 +99,11 @@ Layer:
       type: shape
     properties:
       minzoom: 10
-  - id: world-hd-hydropolys
+  - id: world-nelakes
     geometry: polygon
     <<: *extents84
     Datasource:
-      file: data/hydropolys/hydropolys.shp
-      type: shape
-    properties:
-      minzoom: 7
-      maxzoom: 11
-  - id: world-nelakes
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      file: data/10m-lakes/10m-lakes.shp
+      file: data/ne_10m_lakes/ne_10m_lakes.shp
       type: shape
     properties:
       maxzoom: 11
@@ -107,54 +111,54 @@ Layer:
     geometry: linestring
     <<: *extents84
     Datasource:
-      file: data/World_Roads/v104/roads.gdb
-      type: ogr
+      file: data/roads/roads.shp
+      type: shape
       layer: roads
     properties:
       maxzoom: 11
   - id: world-neroads-na
     geometry: linestring
-    <<: *extents
+    <<: *extents84
     Datasource:
-      file: data/10m-roads-north-america/10m_roads_north_america.shp
+      file: data/ne_10m_roads_north_america/ne_10m_roads_north_america.shp
       type: shape
     properties:
       maxzoom: 11
   - id: world-necountries
     geometry: linestring
-    <<: *extents
+    <<: *extents84
     Datasource:
-      file: data/10m-admin-0-boundary-lines-land/10m-admin-0-boundary-lines-land.shp
+      file: data/ne_10m_admin_0_boundary_lines_land/ne_10m_admin_0_boundary_lines_land.shp
       type: shape
     properties:
       maxzoom: 11
   - id: world-neprovinces
     geometry: linestring
-    <<: *extents
+    <<: *extents84
     Datasource:
-      file: data/10m-admin-1-states-provinces-lines/10m-admin-1-states-provinces-lines.shp
+      file: data/ne_10m_admin_1_states_provinces_lines/ne_10m_admin_1_states_provinces_lines.shp
       type: shape
     properties:
       maxzoom: 11
   - id: world-nepopulated
     geometry: point
-    <<: *extents
+    <<: *extents84
     Datasource:
-      file: data/10m-populated-places/10m-populated-places.shp
+      file: data/ne_10m_populated_places/ne_10m_populated_places.shp
       type: shape
     properties:
       maxzoom: 11
   - id: world-necountries-p
     geometry: point
-    <<: *extents
+    <<: *extents84
     Datasource:
-      file: data/10m-admin-0-country-points/10m-admin-0-country-points.shp
+      file: data/ne_10m_admin_0_countries/ne_10m_admin_0_countries.shp
       type: shape
     properties:
       maxzoom: 11
   - id: world-neprovinces-p
     geometry: polygon
-    <<: *extents
+    <<: *extents84
     Datasource:
       file: data/ne_10m_admin_1_states_provinces_scale_rank/ne_10m_admin_1_states_provinces_scale_rank.shp
       type: shape

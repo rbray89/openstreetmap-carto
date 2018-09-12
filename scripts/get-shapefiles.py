@@ -35,42 +35,105 @@ data_dir = 'data'
 settings = {
     # Keys 1, 2, 3, ... set the arg short-options and the related process
     # ordering. Use > 0 to allow processing.
-    1: {
-        'directory': 'world_boundaries',
-        'url': 'https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
-        'type': 'tgz',
-        'shp_basename': [
-            'world_bnd_m',
-            'places',
-            'world_boundaries_m'],
-        'long_opt': '--world-boundaries'
-    },
+    # 1: {
+    #     'directory': 'world_boundaries',
+    #     'url': 'https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
+    #     'type': 'tgz',
+    #     'shp_basename': [
+    #         'builtup_area'],
+    #     'long_opt': '--world-boundaries'
+    # },
 
     2: {
-        'directory': 'simplified-land-polygons-complete-3857',
-        'url': 'http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip',  # noqa
+        'directory': 'simplified-water-polygons-complete-3857',
+        'url': 'http://data.openstreetmapdata.com/simplified-water-polygons-complete-3857.zip',  # noqa
         'type': 'zip',
-        'shp_basename': ['simplified_land_polygons'],
-        'long_opt': '--simplified-land'
+        'shp_basename': ['simplified_water_polygons'],
+        'long_opt': '--simplified-water'
     },
 
     3: {
-        'directory': 'ne_110m_admin_0_boundary_lines_land',
-        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip',  # noqa
+        'directory': 'ne_10m_admin_0_boundary_lines_land',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip',  # noqa
         'type': 'zip_dir',
-        'shp_basename': ['ne_110m_admin_0_boundary_lines_land'],
+        'shp_basename': ['ne_10m_admin_0_boundary_lines_land'],
         'long_opt': '--ne-admin'
     },
 
     4: {
-        'directory': 'land-polygons-split-3857',
-        'url': 'http://data.openstreetmapdata.com/land-polygons-split-3857.zip',  # noqa
-        'type': 'zip',
-        'shp_basename': ['land_polygons'],
-        'long_opt': '--land-polygons'
+        'directory': 'ne_10m_admin_0_countries',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_admin_0_countries'],
+        'long_opt': '--ne-country-points'
     },
 
     5: {
+        'directory': 'ne_10m_admin_1_states_provinces_lines',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces_lines.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_admin_1_states_provinces_lines'],
+        'long_opt': '--ne-province-lines'
+    },
+
+    6: {
+        'directory': 'ne_10m_lakes',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m_lakes.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_lakes'],
+        'long_opt': '--ne-lakes'
+    },
+
+    7: {
+        'directory': 'ne_10m_populated_places',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_populated_places'],
+        'long_opt': '--ne-populated'
+    },
+
+#    8: {
+#        'directory': '10m-rivers-lake-centerlines-scale-ranks',
+#        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m-rivers-lake-centerlines-scale-ranks.zip',  # noqa
+#        'type': 'zip_dir',
+#        'shp_basename': ['10m-rivers-lake-centerlines-scale-ranks'],
+#        'long_opt': '--ne-populated'
+#    },
+
+    9: {
+        'directory': 'ne_10m_roads_north_america',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_roads_north_america.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_roads_north_america'],
+        'long_opt': '--ne-na-roads'
+    },
+
+    10: {
+        'directory': 'ne_10m_admin_1_states_provinces_scale_rank',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces_scale_rank.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_admin_1_states_provinces_scale_rank'],
+        'long_opt': '--ne-provinces-labels'
+    },
+
+    11: {
+        'directory': 'ne_10m_urban_areas',
+        'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_urban_areas.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['ne_10m_urban_areas'],
+        'long_opt': '--ne-urban'
+    },
+
+
+    12: {
+        'directory': 'water-polygons-split-3857',
+        'url': 'http://data.openstreetmapdata.com/water-polygons-split-3857.zip',  # noqa
+        'type': 'zip',
+        'shp_basename': ['water_polygons'],
+        'long_opt': '--water-polygons'
+    },
+
+    13: {
         'directory': 'antarctica-icesheet-polygons-3857',
         'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip',  # noqa
         'type': 'zip',
@@ -78,12 +141,28 @@ settings = {
         'long_opt': '--icesheet-polygons'
     },
 
-    6: {
+    14: {
         'directory': 'antarctica-icesheet-outlines-3857',
         'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip',  # noqa
         'type': 'zip',
         'shp_basename': ['icesheet_outlines'],
         'long_opt': '--icesheet-outlines'
+    },
+
+    15: {
+        'directory': 'hydropolys',
+        'url': 'http://faculty.baruch.cuny.edu/geoportal/data/esri/world/hydropolys.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['hydropolys'],
+        'long_opt': '--hydropolys'
+    },
+
+    16: {
+        'directory': 'roads',
+        'url': 'http://faculty.baruch.cuny.edu/geoportal/data/esri/world/roads.zip',  # noqa
+        'type': 'zip_dir',
+        'shp_basename': ['roads'],
+        'long_opt': '--world-roads'
     }
 }
 

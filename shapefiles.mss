@@ -51,13 +51,13 @@
 }
 
 #world-nelakes::area [zoom<=11]{
-  [zoom>=0][ScaleRank=0],
-  [zoom>=1][ScaleRank<=1],
-  [zoom>=2][ScaleRank<=2],
-  [zoom>=3][ScaleRank<=3],
-  [zoom>=4][ScaleRank<=4],
-  [zoom>=5][ScaleRank<=5],
-  [zoom>=6][ScaleRank<=6],{
+  [zoom>=0][scalerank=0],
+  [zoom>=1][scalerank<=1],
+  [zoom>=2][scalerank<=2],
+  [zoom>=3][scalerank<=3],
+  [zoom>=4][scalerank<=4],
+  [zoom>=5][scalerank<=5],
+  [zoom>=6][scalerank<=6],{
     line-width: 0;
     polygon-fill: @water-color;
   }
@@ -119,11 +119,11 @@
 }
 
 #world-neprovinces::line[zoom>=4][zoom<=11]{
-  [zoom>=4][SCALERANK<=3],
-  [zoom>=5][SCALERANK<=4],
-  [zoom>=6][SCALERANK<=5],
-  [zoom>=8][SCALERANK<=6],
-  [zoom>=8][SCALERANK>=7]{
+  [zoom>=4][scalerank<=3],
+  [zoom>=5][scalerank<=4],
+  [zoom>=6][scalerank<=5],
+  [zoom>=8][scalerank<=6],
+  [zoom>=8][scalerank>=7]{
     line-color: @admin-boundaries;
     line-dasharray:2,2;
     line-cap:butt;
@@ -164,12 +164,12 @@
 }
 
 #world-necountries-p::label [zoom>2][zoom<=7]{
-  [zoom<=6][zoom>=2][ScaleRank<=1],
-  [zoom>=4][ScaleRank=2],
-  [zoom>=5][ScaleRank=3],
-  [zoom>=8][ScaleRank=4],
-  [zoom>=9][ScaleRank=4],
-  [zoom>=11][ScaleRank>=5]{
+  [zoom<=6][zoom>=2][scalerank<=1],
+  [zoom>=4][scalerank=2],
+  [zoom>=5][scalerank=3],
+  [zoom>=8][scalerank=4],
+  [zoom>=9][scalerank=4],
+  [zoom>=11][scalerank>=5]{
     text-wrap-before: true;
     text-wrap-width: 75;
     text-face-name:@book-fonts;
@@ -193,13 +193,13 @@
 }
 
 #world-neroads-na::line [zoom>=9][zoom<12]{
-  [zoom>=6][ScaleRank<=7],
-  [zoom>=7][ScaleRank<=8],
-  [zoom>=8][ScaleRank<=9],
-  [zoom>=9][ScaleRank<=11],
-  [zoom>=10][ScaleRank<=11],
-  [zoom>=11][ScaleRank<=12],
-  [zoom>=11][ScaleRank>=13], {
+  [zoom>=6][scalerank<=7],
+  [zoom>=7][scalerank<=8],
+  [zoom>=8][scalerank<=9],
+  [zoom>=9][scalerank<=11],
+  [zoom>=10][scalerank<=11],
+  [zoom>=11][scalerank<=12],
+  [zoom>=11][scalerank>=13], {
     line-color:@motorway-fill;
     line-cap:round;
     line-join:round;
