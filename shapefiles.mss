@@ -192,24 +192,6 @@
   [zoom=11]{polygon-fill: lighten(black,94%);}
 }
 
-#world-neroads-na::line [zoom>=9][zoom<12]{
-  [zoom>=6][scalerank<=7],
-  [zoom>=7][scalerank<=8],
-  [zoom>=8][scalerank<=9],
-  [zoom>=9][scalerank<=11],
-  [zoom>=10][scalerank<=11],
-  [zoom>=11][scalerank<=12],
-  [zoom>=11][scalerank>=13], {
-    line-color:@motorway-fill;
-    line-cap:round;
-    line-join:round;
-  [zoom=9]{line-width: .25;}
-  [zoom=10]{line-width: .5;}
-  [zoom=11]{line-width: .75;}
-    line-width:1;
-  }
-}
-
 #world-roads::line [zoom>=6][zoom<=11]{
   [zoom>=6][RANK<=1],
   [zoom>=7][RANK<=1],

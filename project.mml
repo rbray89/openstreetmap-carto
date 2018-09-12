@@ -116,14 +116,6 @@ Layer:
       layer: roads
     properties:
       maxzoom: 11
-  - id: world-neroads-na
-    geometry: linestring
-    <<: *extents84
-    Datasource:
-      file: data/ne_10m_roads_north_america/ne_10m_roads_north_america.shp
-      type: shape
-    properties:
-      maxzoom: 11
   - id: world-necountries
     geometry: linestring
     <<: *extents84
