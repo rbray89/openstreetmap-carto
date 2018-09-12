@@ -114,11 +114,13 @@ RUN apk del --purge .build-dependencies
 
 # Copy data for add-on
 COPY spatialconv /spatialconv
-COPY www /www
 COPY server.py /server.py
+COPY get-shapefiles.py /get-shapefiles.py
 COPY mapnik.xml /mapnik.xml
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
+RUN ln -s /share/mapgen/www /www
+RUN ln -s /share/mapgen/data /data
 
 RUN apk add --no-cache \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
