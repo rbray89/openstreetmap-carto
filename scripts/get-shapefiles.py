@@ -132,22 +132,22 @@ settings = {
         'shp_basename': ['water_polygons'],
         'long_opt': '--water-polygons'
     },
-
-    13: {
-        'directory': 'antarctica-icesheet-polygons-3857',
-        'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip',  # noqa
-        'type': 'zip',
-        'shp_basename': ['icesheet_polygons'],
-        'long_opt': '--icesheet-polygons'
-    },
-
-    14: {
-        'directory': 'antarctica-icesheet-outlines-3857',
-        'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip',  # noqa
-        'type': 'zip',
-        'shp_basename': ['icesheet_outlines'],
-        'long_opt': '--icesheet-outlines'
-    },
+    #
+    # 13: {
+    #     'directory': 'antarctica-icesheet-polygons-3857',
+    #     'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip',  # noqa
+    #     'type': 'zip',
+    #     'shp_basename': ['icesheet_polygons'],
+    #     'long_opt': '--icesheet-polygons'
+    # },
+    #
+    # 14: {
+    #     'directory': 'antarctica-icesheet-outlines-3857',
+    #     'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip',  # noqa
+    #     'type': 'zip',
+    #     'shp_basename': ['icesheet_outlines'],
+    #     'long_opt': '--icesheet-outlines'
+    # },
 
     15: {
         'directory': 'hydropolys',
