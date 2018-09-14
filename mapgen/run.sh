@@ -1,6 +1,6 @@
 #!/bin/sh
 
 # Downloading needed shapefiles
-python get-shapefiles.py -n
+cd mapgen/ && ./get-shapefiles.py -n -f
 
-python /server.py 8000
+./server.py 8000

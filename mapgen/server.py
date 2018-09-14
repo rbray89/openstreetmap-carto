@@ -425,7 +425,7 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
 
 
 def mapSetup():
-    gdal.SetCacheMax(500000000)
+    gdal.SetCacheMax(134217728)
     global emptymapstring
     if not exists(emptydb) and not exists(emptyosm):
         response = '''

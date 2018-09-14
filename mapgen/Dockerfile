@@ -13,24 +13,39 @@ RUN \
   apk add --no-cache \
   --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   boost\
-  boost-python
+  boost-python \
+  proj4 \
+  tiff \
+  cairo \
+  icu \
+  libpng \
+  libwebp \
+  sqlite \
+  freetype \
+  libxml2 \
+  gdal \
+  py-gdal \
+  harfbuzz \
+  py-setuptools \
+  font-noto \
+  boost-program_options
 
 # Setup base
 RUN \
   apk add --no-cache --virtual .build-dependencies \
   --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    g++=6.4.0-r8 \
-    gcc=6.4.0-r8 \
-    zlib-dev=1.2.11-r1 \
-    curl=7.61.0-r0 \
-    git=2.18.0-r0 \
-    make=4.2.1-r2 \
-    py2-pip=10.0.1-r0 \
+    g++ \
+    gcc \
+    zlib-dev \
+    curl \
+    git \
+    make \
+    py2-pip \
     openssh \
     cmake \
     automake \
-    autoconf=2.69-r2 \
-    libtool=2.4.6-r5 \
+    autoconf \
+    libtool \
     linux-headers \
     boost-dev \
     cairo-dev \
@@ -49,7 +64,7 @@ RUN \
 	postgresql-dev \
     proj4-dev \
     swig \
-    boost-python=1.66.0-r0
+    boost-python
 RUN mkdir -p ~/.ssh/ \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN wget -O tmp/config.guess 'https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=7d3d27baf8107b630586c962c057e22149653deb' \
@@ -113,31 +128,18 @@ RUN git clone https://github.com/mapnik/python-mapnik.git \
 RUN apk del --purge .build-dependencies
 
 # Copy data for add-on
-COPY spatialconv /spatialconv
-COPY server.py /server.py
-COPY get-shapefiles.py /get-shapefiles.py
-COPY mapnik.xml /mapnik.xml
+RUN mkdir /mapgen
+COPY spatialconv /mapgen/spatialconv
+COPY server.py /mapgen/server.py
+COPY get-shapefiles.py /mapgen/get-shapefiles.py
+COPY mapnik.xml /mapgen/mapnik.xml
 COPY run.sh /run.sh
+RUN chmod +x /mapgen/server.py
+RUN chmod +x /mapgen/get-shapefiles.py
 RUN chmod +x /run.sh
-RUN ln -s /share/mapgen/www /www
-RUN ln -s /share/mapgen/data /data
-
-RUN apk add --no-cache \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    proj4 \
-    tiff \
-    cairo \
-    icu \
-    libpng \
-    libwebp \
-    sqlite \
-    freetype \
-    libxml2 \
-    gdal \
-    py-gdal \
-    harfbuzz \
-    py-setuptools \
-    font-noto
+RUN ln -s /share/mapgen/www /mapgen/www
+RUN ln -s /share/mapgen/data /mapgen/data
+RUN ln -s /share/mapgen/symbols /mapgen/symbols
 
 CMD [ "/run.sh" ]
 #RUN [ "cross-build-end" ]
